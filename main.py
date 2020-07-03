@@ -58,6 +58,7 @@ class Lemonade:
                     print("{:.2f} gallon(s) of water".format(self.water))
                     print("{:.2f} gallon(s) of agave nectar".format(self.agave))
                     print("There, now go make Lemonade!")
+                    break
 
                 elif user_input == 'n':
                     print("Ok, now go make Lemonade!")
