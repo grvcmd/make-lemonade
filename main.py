@@ -42,6 +42,21 @@ class Lemonade:
         print("{:.2f} cup(s) of water".format(self.water))
         print("{:.2f} cup(s) of agave nectar".format(self.agave))
 
+    def convert_to_gallons(self):
+        user_input = None
+        while user_input != 'n':
+            user_input = str(input("\nDo you need measurements in gallons? ")).lower()
+            if user_input == 'y':
+                self.lemon = self.lemon / 16
+                self.water = self.water / 16
+                self.agave = self.agave / 16
+            else:
+                break
+
+            print("{:.2f} gallon(s) of lemon juice".format(self.lemon))
+            print("{:.2f} gallon(s) of water".format(self.water))
+            print("{:.2f} gallon(s) of agave nectar".format(self.agave))
+
 
 if __name__ == '__main__':
     welcome()
@@ -49,3 +64,4 @@ if __name__ == '__main__':
     cup = Lemonade()
     cup.get_servings()
     cup.calculate_ingredients()
+    cup.convert_to_gallons()
