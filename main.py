@@ -29,10 +29,11 @@ class Lemonade:
                 self.servings = int(input("\nNow, how many servings would you like to make: "))
                 return self.servings
             except ValueError:
-                print("Invalid input. Try again.")
+                print("Invalid input. Please try again.")
 
     def calculate_ingredients(self):
         print("\nTo make {} servings of Lemonade you will need...".format(self.servings))
+        time.sleep(1)
 
         self.lemon = (self.servings / self.init_serving) * self.lemon
         self.water = (self.servings / self.init_serving) * self.water
@@ -43,19 +44,32 @@ class Lemonade:
         print("{:.2f} cup(s) of agave nectar".format(self.agave))
 
     def convert_to_gallons(self):
-        user_input = None
-        while user_input != 'n':
-            user_input = str(input("\nDo you need measurements in gallons? ")).lower()
-            if user_input == 'y':
-                self.lemon = self.lemon / 16
-                self.water = self.water / 16
-                self.agave = self.agave / 16
-            else:
-                break
+        while True:
+            try:
+                user_input = str(input("\nDo you need measurements in gallons? (y/n): ")).lower()
+                if user_input == 'y':
+                    self.lemon = self.lemon / 16
+                    self.water = self.water / 16
+                    self.agave = self.agave / 16
 
-            print("{:.2f} gallon(s) of lemon juice".format(self.lemon))
-            print("{:.2f} gallon(s) of water".format(self.water))
-            print("{:.2f} gallon(s) of agave nectar".format(self.agave))
+                    time.sleep(1)
+
+                    print("{:.2f} gallon(s) of lemon juice".format(self.lemon))
+                    print("{:.2f} gallon(s) of water".format(self.water))
+                    print("{:.2f} gallon(s) of agave nectar".format(self.agave))
+                    print("There, now go make Lemonade!")
+
+                elif user_input == 'n':
+                    print("Ok, now go make Lemonade!")
+                    break
+
+                else:
+                    raise ValueError('Invalid input. Please try again.')
+
+            except ValueError as e:
+                print(e)
+
+
 
 
 if __name__ == '__main__':
